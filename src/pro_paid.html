@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+spans with class 'account-name' can have their inner html replaced with account names.
+spans with class 'account-type' can have their inner html replaced with 'Free account' or 'Pro account'.
+
+
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Augmented Classroom Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-inter bg-background flex flex-col min-h-screen">
+    <header class="h-[80px] bg-white w-full flex items-center justify-between px-8 z-20 relative">
+        <!-- Logo Area -->
+        <div class="flex items-center gap-3">
+            <div class="bg-background rounded-full h-[70px] w-[70px]  flex items-center justify-center">
+            </div>
+            <div class="text-black">
+                <h1 class="font-bold text-lg leading-tight">AUGMENTED<br>CLASSROOM</h1>
+                <p class="text-[10px] text-black">by CleverBooks</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex items-center gap-8 text-black font-format-subtitle">
+            <div class="flex items-center cursor-pointer">
+                <span>EN</span>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1">
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 overflow-y-auto flex flex-col relative">
+            <div class="px-16 w-full text-center">
+
+                <div
+                    class="mt-[60px] relative mx-auto max-w-[576px] px-8 py-10 bg-white border border-borders rounded-[10px]">
+
+                    <!-- Close Icon -->
+                    <button
+                        class="absolute top-2 right-4 text-gray-400 hover:text-gray-600 text-2xl font-light focus:outline-none">
+                        &times;
+                    </button>
+
+                    <!-- Logo Placeholder (Black Circle) -->
+                    <div class="w-[98px] h-[98px] bg-background rounded-full mx-auto mb-4"></div>
+
+                    <!-- Headline -->
+                    <h2 class="font-format-title text-headlines leading-tight mb-8">
+                        Welcome to Augmented<br>Classroom PRO
+                    </h2>
+
+                    <!-- Content -->
+                    <div class="text-bodycopy font-format-body leading-relaxed mb-8">
+                        <p>Your full-access account is ready! 🎉<br>
+                            All features are now <strong>unlocked</strong>, giving you the
+                            power to immerse your students in a collaborative learning space with <strong>AR & AI
+                                magic</strong>. Start exploring and bring your
+                            lessons to life like never before!
+                        </p>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <button
+                        class="group bg-dark-blue hover:bg-[#0057AE] text-white font-format-heading-button border border-dark-blue hover:border-[#0057AE] py-3 px-8 h-[51px] rounded-full transition">
+                        Get started
+                    </button>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
