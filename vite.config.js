@@ -48,6 +48,38 @@ function htmlFilesPlugin() {
           source: updatedContent
         })
       })
+
+      // Create root index.html that redirects to src/index.html
+      const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'your-repo-name'
+      const redirectContent = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Project Navigation</title>
+  <noscript>
+    <meta http-equiv="refresh" content="0;url=/${repoName}/src/index.html">
+  </noscript>
+  <script>
+    window.location.href = '/${repoName}/src/index.html';
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="/${repoName}/src/index.html">/${repoName}/src/index.html</a>...</p>
+</body>
+</html>`
+
+      this.emitFile({
+        type: 'asset',
+        fileName: 'index.html',
+        source: redirectContent
+      })
+
+      // Create 404.html that also redirects
+      this.emitFile({
+        type: 'asset',
+        fileName: '404.html',
+        source: redirectContent
+      })
     }
   }
 }
@@ -74,6 +106,7 @@ export default defineConfig({
       }
     }
   },
-  // Configure base path for assets
-  base: './'
+  // Configure base path for GitHub Pages
+  // Replace 'your-username' and 'your-repo-name' with your actual GitHub details
+  base: '/arc-tpls-2026/'
 })
