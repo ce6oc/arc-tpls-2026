@@ -8,6 +8,8 @@ const entryPointContent = `
 import './style.css';
 import './assets/images/features-basic.png';
 import './assets/images/features-pro.png';
+import './assets/images/app-stores.png';
+import './assets/images/app-stores-big.png';
 `
 fs.writeFileSync(entryPointPath, entryPointContent)
 
@@ -24,6 +26,8 @@ function htmlFilesPlugin() {
       const cssFile = Object.keys(bundle).find(key => key.endsWith('.css'))
       const basicPngFile = Object.keys(bundle).find(key => key.includes('features-basic') && key.endsWith('.png'))
       const proPngFile = Object.keys(bundle).find(key => key.includes('features-pro') && key.endsWith('.png'))
+      const appStoresPngFile = Object.keys(bundle).find(key => key.includes('app-stores') && !key.includes('app-stores-big') && key.endsWith('.png'))
+      const appStoresBigPngFile = Object.keys(bundle).find(key => key.includes('app-stores-big') && key.endsWith('.png'))
 
       htmlFiles.forEach(file => {
         const filePath = resolve(srcDir, file)
@@ -40,6 +44,12 @@ function htmlFilesPlugin() {
         if (proPngFile) {
           updatedContent = updatedContent.replace(/src="assets\/images\/features-pro\.png"/g, `src="../${proPngFile}"`)
         }
+        if (appStoresPngFile) {
+          updatedContent = updatedContent.replace(/src="assets\/images\/app-stores\.png"/g, `src="../${appStoresPngFile}"`)
+        }
+        if (appStoresBigPngFile) {
+          updatedContent = updatedContent.replace(/src="assets\/images\/app-stores-big\.png"/g, `src="../${appStoresBigPngFile}"`)
+        }
 
         // Add to bundle
         this.emitFile({
@@ -50,7 +60,7 @@ function htmlFilesPlugin() {
       })
 
       // Create root index.html that redirects to src/index.html
-      const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'your-repo-name'
+      const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || 'arc-tpls-2026'
       const redirectContent = `<!DOCTYPE html>
 <html>
 <head>
@@ -107,6 +117,6 @@ export default defineConfig({
     }
   },
   // Configure base path for GitHub Pages
-  // Replace 'your-username' and 'your-repo-name' with your actual GitHub details
+  // Only the repository name is needed here (no username)
   base: '/arc-tpls-2026/'
 })
